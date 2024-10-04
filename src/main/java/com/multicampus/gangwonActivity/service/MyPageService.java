@@ -3,9 +3,11 @@ package com.multicampus.gangwonActivity.service;
 
 import com.multicampus.gangwonActivity.dto.request.mypage.CheckPasswordRequestDto;
 import com.multicampus.gangwonActivity.dto.request.mypage.ModifyMyInfoRequestDto;
+import com.multicampus.gangwonActivity.dto.response.board.GetBoardDetailResponseDto;
 import com.multicampus.gangwonActivity.dto.response.board.GetBoardListResponseDto;
 import com.multicampus.gangwonActivity.dto.response.board.SearchPageDto;
 import com.multicampus.gangwonActivity.dto.response.mypage.*;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
@@ -37,6 +39,6 @@ public interface MyPageService {
 
     int countMyCourse(String userId);
 
-    int getUserExp(String id);
+    ResponseEntity<GetMyExpResponseDto> getUserExp(String id);
     ResponseEntity<? super MyPageResponseDto> deleteMyCourse(Long myCourseNo);
 }

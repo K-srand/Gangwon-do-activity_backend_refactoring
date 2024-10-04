@@ -1,5 +1,6 @@
 package com.multicampus.gangwonActivity.mapper;
 
+import com.multicampus.gangwonActivity.dto.response.board.GetBoardDetailResponseDto;
 import com.multicampus.gangwonActivity.dto.response.board.SearchPageDto;
 import com.multicampus.gangwonActivity.dto.response.mypage.GetMyPageCourseResponseDto;
 import com.multicampus.gangwonActivity.dto.response.mypage.GetMyExpResponseDto;
@@ -36,6 +37,6 @@ public interface MyFavoriteMapper {
 
     void deleteMyCourse(@Param("myCourseNo") Long myCourseNo);
 
-    Integer getMyExp(@Param("userNo") Long userNo);
+    GetMyExpResponseDto getMyExp(Long userNo);
 
 }

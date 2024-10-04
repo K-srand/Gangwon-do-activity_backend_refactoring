@@ -144,7 +144,7 @@
     </select>
 
     <select id="getBoardListByUserNoPaged" resultType="com.multicampus.gangwonActivity.dto.response.board.GetBoardListResponseDto">
-        select boardTitle, writtenTime from board
+        select boardTitle, boardNo, writtenTime from board
         where userNo = #{userNo}
         limit  #{searchPageDto.size}
         offset #{searchPageDto.offset}

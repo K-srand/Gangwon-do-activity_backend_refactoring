@@ -10,4 +10,6 @@ public class GetMyPageCourseResponseDto {
     private Long myCourseNo;
     private String placeTitle;
     private String firstImage2;
+    private double mapx;
+    private double mapy;
 }

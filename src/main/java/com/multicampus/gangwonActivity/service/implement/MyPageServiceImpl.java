@@ -3,6 +3,8 @@ package com.multicampus.gangwonActivity.service.implement;
 import com.multicampus.gangwonActivity.dto.request.mypage.CheckPasswordRequestDto;
 import com.multicampus.gangwonActivity.dto.request.mypage.ModifyMyInfoRequestDto;
 import com.multicampus.gangwonActivity.dto.response.ResponseDto;
+import com.multicampus.gangwonActivity.dto.response.board.GetBoardCommentListResponseDto;
+import com.multicampus.gangwonActivity.dto.response.board.GetBoardDetailResponseDto;
 import com.multicampus.gangwonActivity.dto.response.board.GetBoardListResponseDto;
 import com.multicampus.gangwonActivity.dto.response.board.SearchPageDto;
 import com.multicampus.gangwonActivity.dto.response.mypage.*;
@@ -177,11 +179,17 @@ public class MyPageServiceImpl implements MyPageService {
         }
         return MyPageResponseDto.success();
     }
-
     @Override
-    public int getUserExp(String id) {
-        Long userNo = myFavoriteMapper.selectUserNo(id);
-        return myFavoriteMapper.getMyExp(userNo);
+    public ResponseEntity<GetMyExpResponseDto> getUserExp(String id) {
+        Long userNo = myFavoriteMapper.selectUserNo(id); // userNo 조회
+        GetMyExpResponseDto userData = myFavoriteMapper.getMyExp(userNo); // userExp, userNick 가져오기
+
+        // 사용자 경험 DTO 설정
+        GetMyExpResponseDto getMyExpResponseDto = new GetMyExpResponseDto();
+        getMyExpResponseDto.setUserExp(userData.getUserExp());
+        getMyExpResponseDto.setUserNick(userData.getUserNick());
+
+        return ResponseEntity.ok(getMyExpResponseDto);
     }
 
 }

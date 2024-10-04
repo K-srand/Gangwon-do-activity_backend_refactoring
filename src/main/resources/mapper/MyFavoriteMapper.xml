@@ -40,7 +40,7 @@
 
     <!-- 나만의 코스 불러오기 -->
     <select id="findMyCourse" resultType="com.multicampus.gangwonActivity.dto.response.mypage.GetMyPageCourseResponseDto">
-        SELECT mc.myCourseNo, p.placeTitle, p.firstImage2
+        SELECT mc.myCourseNo, p.placeTitle, p.firstImage2, p.mapx, p.mapy
         FROM myCourse mc
                  JOIN myCoursePlace mcp ON mc.myCourseNo = mcp.myCourseNo
                  JOIN place p ON mcp.placeNo = p.placeNo
@@ -60,8 +60,8 @@
     </delete>
 
     <!-- 나의 경험치 -->
-    <select id="getMyExp" resultType="int" parameterType="long">
-        SELECT userExp FROM user WHERE userNo=#{userNo}
+    <select id="getMyExp" resultType="com.multicampus.gangwonActivity.dto.response.mypage.GetMyExpResponseDto">
+        SELECT userExp, userNick FROM user WHERE userNo = #{userNo}
     </select>
 
 </mapper>

@@ -4,6 +4,7 @@ package com.multicampus.gangwonActivity.controller;
 import com.multicampus.gangwonActivity.dto.request.mypage.CheckPasswordRequestDto;
 import com.multicampus.gangwonActivity.dto.request.board.MyCourseUploadRequestDto;
 import com.multicampus.gangwonActivity.dto.request.mypage.ModifyMyInfoRequestDto;
+import com.multicampus.gangwonActivity.dto.response.board.GetBoardDetailResponseDto;
 import com.multicampus.gangwonActivity.dto.response.board.GetBoardListResponseDto;
 import com.multicampus.gangwonActivity.dto.response.board.SearchPageDto;
 import com.multicampus.gangwonActivity.dto.response.mypage.*;
@@ -38,6 +39,7 @@ public class MyPageController {
         searchPageDto.setSize(size);
 
         List<GetBoardListResponseDto> myboardListByPage = myPageService.getMyPageBoard(id, searchPageDto);
+
         int myBoardCount = myPageService.countBoardByUserId(id);
 
         return ResponseEntity.ok(new PageImpl<>(myboardListByPage, PageRequest.of(page, size), myBoardCount));
@@ -129,11 +131,8 @@ public class MyPageController {
     }
 
     @GetMapping("/exp")
-    public ResponseEntity<? super GetMyExpResponseDto> getMyExp(
-            @AuthenticationPrincipal String id){
-        int rank = myPageService.getUserExp(id);
-        return ResponseEntity.ok(rank);
+    public ResponseEntity<GetMyExpResponseDto> getMyExp(@AuthenticationPrincipal String id) {
+        return myPageService.getUserExp(id);
     }
-
 }
 

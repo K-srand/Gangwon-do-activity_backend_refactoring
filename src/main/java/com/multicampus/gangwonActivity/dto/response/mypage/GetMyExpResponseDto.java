@@ -14,6 +14,7 @@ public class GetMyExpResponseDto extends ResponseDto {
 
     private Integer userExp;
     private Integer userRank;
+    private String userNick;
     public GetMyExpResponseDto() { super(ResponseCode.SUCCESS, ResponseMessage.SUCCESS);}
 
     public static ResponseEntity<GetMyExpResponseDto> success(){
